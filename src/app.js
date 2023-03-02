@@ -9,8 +9,17 @@ app.set('view engine','ejs');
 
 app.use(express.static('public'));
 
+const DB='mongodb+srv://itsadityasharma7124:Jaishreeram123@cluster0.rgyn6el.mongodb.net/loginPage-v2?retryWrites=true&w=majority'
+
 mongoose.set('strictQuery',false);
-mongoose.connect("mongodb://127.0.0.1:27017/loginPage");
+mongoose.connect(DB,function(err){
+    if(!err){
+        console.log("succcessfully connected");
+    }
+    else{
+        console.log(err);
+    }
+});
 
 const loginCredentialsSchema=new mongoose.Schema({
     name:{
