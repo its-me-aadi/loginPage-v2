@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express= require("express");
 const bodyParser=require("body-parser");
 const mongoose= require("mongoose");
@@ -9,7 +10,9 @@ app.set('view engine','ejs');
 
 app.use(express.static('public'));
 
-const DB='mongodb+srv://itsadityasharma7124:Jaishreeram123@cluster0.rgyn6el.mongodb.net/loginPage-v2?retryWrites=true&w=majority'
+const dbPass=process.env.DB_PASSWORD;
+const DB='mongodb+srv://itsadityasharma7124:'+dbPass+'@cluster0.rgyn6el.mongodb.net/loginPage-v2?retryWrites=true&w=majority'
+
 
 mongoose.set('strictQuery',false);
 mongoose.connect(DB,function(err){
